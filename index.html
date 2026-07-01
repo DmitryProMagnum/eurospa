@@ -102,7 +102,7 @@
     --ease:cubic-bezier(.2,.7,.2,1);
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; overflow-x:hidden;}
   body{margin:0; background:var(--noir); color:var(--ink); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-x:hidden;}
   img{max-width:100%; display:block;}
   a{color:inherit;}
@@ -182,13 +182,41 @@
   .tel-link:hover{color:var(--gold-l);}
   .wa-pill{display:inline-flex; white-space:nowrap; align-items:center; gap:9px; font-family:var(--sans); font-weight:500; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--noir); background:var(--gold); padding:11px 22px; border-radius:40px; text-decoration:none; transition:background .3s, transform .3s, box-shadow .3s; box-shadow:0 8px 22px -12px rgba(198,165,103,0.9);}
   .wa-pill:hover{background:var(--gold-l); transform:translateY(-1px);}
-  .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;}
-  .burger span{width:24px; height:2px; background:var(--cream); display:block; transition:transform .3s, opacity .3s;}
-  .mobile-menu{position:fixed; inset:0; z-index:60; background:rgba(16,9,21,0.985); backdrop-filter:blur(10px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; opacity:0; pointer-events:none; transition:opacity .4s var(--ease);}
-  .mobile-menu.open{opacity:1; pointer-events:auto;}
-  .mobile-menu a{font-family:var(--serif); font-size:38px; font-weight:400; color:var(--cream); text-decoration:none; letter-spacing:0.02em; padding:10px;}
-  .mobile-menu a:hover{color:var(--gold-l);}
-  .mobile-menu .mclose{position:absolute; top:22px; right:26px; font-size:38px; color:var(--cream); background:none; border:none; cursor:pointer; line-height:1;}
+  .burger{display:none; flex-direction:column; align-items:center; justify-content:center; gap:6px; width:44px; height:42px; background:none; border:none; cursor:pointer; padding:0;}
+  .burger span{width:26px; height:1.5px; background:var(--cream); display:block; border-radius:2px; transition:transform .38s var(--ease), opacity .25s ease, background .3s;}
+  .burger:active span{background:var(--gold-l);}
+  .burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0; transform:scaleX(0);}
+  .burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+  /* premium full-screen mobile menu */
+  .mobile-menu{position:fixed; inset:0; z-index:90; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    background:radial-gradient(130% 80% at 82% 8%, rgba(198,165,103,0.16), transparent 55%), linear-gradient(165deg, #241430 0%, #170C1F 55%, #120A17 100%);
+    opacity:0; visibility:hidden; transition:opacity .5s var(--ease), visibility .5s;}
+  .mobile-menu.open{opacity:1; visibility:visible;}
+  .mm-inner{min-height:100%; display:flex; flex-direction:column; padding:20px 28px calc(30px + env(safe-area-inset-bottom));}
+  .mm-head{display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px solid rgba(198,165,103,0.18);}
+  .mm-brand{font-family:var(--serif); font-weight:500; font-size:22px; letter-spacing:0.3em; color:var(--cream-l);}
+  .mm-close{width:46px; height:46px; border-radius:50%; border:1px solid rgba(198,165,103,0.4); background:transparent; color:var(--cream); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .3s var(--ease), color .3s, border-color .3s, transform .3s;}
+  .mm-close:active{background:var(--gold); color:var(--noir); border-color:var(--gold); transform:rotate(90deg);}
+  .mm-nav{flex:1; display:flex; flex-direction:column; justify-content:center; gap:2px; padding:30px 0;}
+  .mm-nav a{display:flex; align-items:baseline; gap:20px; font-family:var(--serif); font-weight:400; font-size:clamp(34px,10vw,44px); line-height:1.42; color:var(--cream-l); text-decoration:none; padding:5px 0; transform:translateX(-18px); opacity:0;}
+  .mm-nav a i{font-family:var(--serif); font-style:italic; font-size:15px; color:var(--gold); width:22px; flex-shrink:0; transform:translateY(-6px);}
+  .mm-nav a:active{color:var(--gold-l);}
+  .mobile-menu.open .mm-nav a{animation:mmSlide .6s var(--ease) forwards;}
+  .mobile-menu.open .mm-nav a:nth-child(1){animation-delay:.12s;}
+  .mobile-menu.open .mm-nav a:nth-child(2){animation-delay:.18s;}
+  .mobile-menu.open .mm-nav a:nth-child(3){animation-delay:.24s;}
+  .mobile-menu.open .mm-nav a:nth-child(4){animation-delay:.30s;}
+  .mobile-menu.open .mm-nav a:nth-child(5){animation-delay:.36s;}
+  @keyframes mmSlide{to{transform:translateX(0); opacity:1;}}
+  .mm-foot{display:flex; flex-direction:column; align-items:flex-start; gap:14px; padding-top:24px; border-top:1px solid rgba(198,165,103,0.18); opacity:0;}
+  .mobile-menu.open .mm-foot{animation:mmFade .7s .44s var(--ease) forwards;}
+  @keyframes mmFade{from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;}}
+  .mm-tel{font-family:var(--serif); font-size:28px; color:var(--cream-l); text-decoration:none;}
+  .mm-hours{font-family:var(--sans); font-weight:300; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(244,236,221,0.5);}
+  .mm-book{width:100%; text-align:center; margin-top:8px; padding:16px;}
+  .mm-social{display:flex; gap:12px; margin-top:6px;}
 
   /* hero */
   .hero{position:relative; min-height:calc(100vh - 118px); background:var(--noir); overflow:hidden; display:flex; align-items:center; justify-content:center;}
@@ -431,6 +459,12 @@
     .inside-split{grid-template-columns:1fr;}
     .inside-feature{height:320px;}
     .inside-quad .tile{height:190px;}
+    /* footer: stack + reduce side padding so nothing overflows */
+    footer{padding:44px 22px 26px;}
+    .foot-top{flex-direction:column; align-items:flex-start; gap:22px;}
+    .foot-links{flex-wrap:wrap; gap:14px 24px;}
+    .foot-top > div:last-child{width:100%; justify-content:space-between;}
+    .foot-legal{gap:10px 16px; margin-top:24px;}
   }
   @media(max-width:480px){
     .hero h1{font-size:46px;}
@@ -439,7 +473,7 @@
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none !important; transition:none !important;}
-    .reveal,.stagger>*{opacity:1; transform:none;}
+    .reveal,.stagger>*,.mm-nav a,.mm-foot{opacity:1; transform:none;}
   }
 </style>
 </head>
@@ -484,17 +518,28 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mclose" id="mclose" aria-label="Close">&times;</button>
-  <a href="#treatments">Services</a>
-  <a href="#masters">Therapists</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a class="wa-pill" href="#" data-wa data-loc="mobile_menu" style="display:inline-flex; margin-top:18px; font-size:13px;">Book on WhatsApp</a>
-  <span class="nav-social" style="display:flex; margin-top:8px;">
-    <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-loc="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-    <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-loc="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
-  </span>
+  <div class="mm-inner">
+    <div class="mm-head">
+      <span class="mm-brand">EUROSPA</span>
+      <button class="mm-close" id="mclose" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button>
+    </div>
+    <nav class="mm-nav">
+      <a href="#treatments"><i>01</i>Services</a>
+      <a href="#masters"><i>02</i>Therapists</a>
+      <a href="#gallery"><i>03</i>Gallery</a>
+      <a href="#about"><i>04</i>About</a>
+      <a href="#contact"><i>05</i>Contact</a>
+    </nav>
+    <div class="mm-foot">
+      <a class="mm-tel" href="tel:+971502271889" data-tel data-loc="mobile_menu">+971 50 227 1889</a>
+      <div class="mm-hours">Daily 10:00 to 02:00 · Barsha Heights</div>
+      <a class="btn btn-gold mm-book" href="#" data-wa data-loc="mobile_menu">Book on WhatsApp</a>
+      <span class="mm-social nav-social">
+        <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-loc="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-loc="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
+      </span>
+    </div>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -856,10 +901,12 @@
   }
   function onScroll(){ if(!navTick){ navTick=true; requestAnimationFrame(applyNav); } }
   window.addEventListener('scroll',onScroll,{passive:true}); applyNav();
-  var menu=$('#mobileMenu');
-  $('#burger').addEventListener('click',function(){menu.classList.add('open');});
-  $('#mclose').addEventListener('click',function(){menu.classList.remove('open');});
-  $$('#mobileMenu a:not([data-wa])').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');});});
+  var menu=$('#mobileMenu'), burger=$('#burger');
+  function openMenu(){ menu.classList.add('open'); burger.classList.add('open'); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ menu.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  burger.addEventListener('click',function(){ menu.classList.contains('open')?closeMenu():openMenu(); });
+  $('#mclose').addEventListener('click',closeMenu);
+  $$('#mobileMenu a').forEach(function(a){ a.addEventListener('click',closeMenu); });
 
   /* hero video reveal */
   var hv=$('#heroVideo');
@@ -873,7 +920,7 @@
   /* delegated tracking + WhatsApp */
   document.addEventListener('click',function(e){
     var wa=e.target.closest('[data-wa]');
-    if(wa){ e.preventDefault(); menu.classList.remove('open');
+    if(wa){ e.preventDefault(); closeMenu();
       openWa('Hi, I would like to book an appointment at EuroSpa.', wa.getAttribute('data-loc')); return; }
     var tel=e.target.closest('[data-tel]'); if(tel){ track('phone_click', tel.getAttribute('data-loc')); }
     var mp=e.target.closest('[data-maps]'); if(mp){ track('maps_click', mp.getAttribute('data-loc')); }
@@ -979,7 +1026,7 @@
   $('#quizClose').addEventListener('click',closeQuiz);
   quizModal.addEventListener('click',function(e){ if(e.target===quizModal) closeQuiz(); });
   $$('[data-quiz]').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); openQuiz(); }); });
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeQuiz(); closeVideo(); menu.classList.remove('open'); } });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeQuiz(); closeVideo(); closeMenu(); } });
 
   /* Elfsight Instagram feed is embedded directly in the markup (see #instagram section) */
 
