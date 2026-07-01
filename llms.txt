@@ -1,29 +1,33 @@
 # EuroSpa
 
-> Licensed European massage centre in Barsha Heights, Dubai. Swedish, deep tissue, hot stone, aroma and bamboo fusion massage by expert European therapists. Open daily 10:00 to 02:00. Booking is by WhatsApp.
+> EuroSpa is a licensed European massage centre in Barsha Heights, Dubai. It offers Swedish, deep tissue, hot stone, aroma and bamboo fusion massage by expert European therapists, open every day from 10:00 to 02:00. Booking is handled through WhatsApp; there is no online payment.
 
-## Location and contact
+## Links
+
+- [EuroSpa website](https://promo.eurospa.ae/): home page with services, therapists, gallery and booking
+- [Book on WhatsApp](https://api.whatsapp.com/send/?phone=971562279600): direct booking chat, +971 56 227 9600
+- [Instagram](https://www.instagram.com/eurospa.dxb/): photos and reels
+- [Facebook](https://www.facebook.com/eurospa.dubai/): page and reviews
+- [Location on Google Maps](https://maps.app.goo.gl/jxZN5T434j4k6mCU8): Ramada by Wyndham Hotel, 2nd floor, Barsha Heights, Dubai
+
+## Details
+
 - Address: Ramada by Wyndham Hotel, 2nd floor, Barsha Heights (Tecom), Dubai, United Arab Emirates
 - Hours: every day, 10:00 to 02:00
-- WhatsApp (booking): +971 56 227 9600
 - Phone: +971 50 227 1889
 - Email: dubaimassagetreat@gmail.com
-- Website: https://promo.eurospa.ae/
-- Instagram: https://www.instagram.com/eurospa.dxb/
-- Facebook: https://www.facebook.com/eurospa.dubai/
+- Price range: AED 300 to 1320, inclusive of 15% service charge, 7% municipality fee and 5% VAT
+- Cancellation: 24 hours notice required for changes or cancellations
+- Therapists: Alexia, Dana, Elena, Mila, Kate, Marina, Alex
 
-## Services and prices (60 min / 90 min, AED, inclusive of 15% service charge, 7% municipality fee and 5% VAT)
-- Tension Relaxation Massage (Swedish): 450 / 650
-- Deep Muscle Relaxation Massage: 500 / 700
-- Essential Oil Aroma Massage: 300 / 520
-- Thai Tranquility Therapy (Lomi Lomi): 570 / 850
-- Hot Stone Enjoyment Massage: 570 / 850
-- Double Relaxation Massage: 940 / 1320
-- Indulgences for Two: 940 / 1320
-- Signature Bamboo Fusion Massage: 570 / 850
-- Traditional Thai Stretching Massage: 570 / 850
+## Services (price for 60 min / 90 min, in AED)
 
-## Notes
-- All bookings go through WhatsApp; there is no online payment.
-- A 24 hour notice is required for changes or cancellations.
-- Therapists: Alexia, Dana, Elena, Mila, Kate, Marina, Alex.
+- [Tension Relaxation Massage (Swedish)](https://promo.eurospa.ae/#treatments): 450 / 650
+- [Deep Muscle Relaxation Massage](https://promo.eurospa.ae/#treatments): 500 / 700
+- [Essential Oil Aroma Massage](https://promo.eurospa.ae/#treatments): 300 / 520
+- [Thai Tranquility Therapy (Lomi Lomi)](https://promo.eurospa.ae/#treatments): 570 / 850
+- [Hot Stone Enjoyment Massage](https://promo.eurospa.ae/#treatments): 570 / 850
+- [Double Relaxation Massage](https://promo.eurospa.ae/#treatments): 940 / 1320
+- [Indulgences for Two](https://promo.eurospa.ae/#treatments): 940 / 1320
+- [Signature Bamboo Fusion Massage](https://promo.eurospa.ae/#treatments): 570 / 850
+- [Traditional Thai Stretching Massage](https://promo.eurospa.ae/#treatments): 570 / 850

@@ -220,10 +220,7 @@
 
   /* hero */
   .hero{position:relative; min-height:calc(100vh - 118px); background:var(--noir); overflow:hidden; display:flex; align-items:center; justify-content:center;}
-  .hero-bg{position:absolute; inset:0; background-size:cover; background-position:center; z-index:0; filter:brightness(1.12) saturate(1.05);
-    background-image:image-set(url("assets/hero/hero-768.webp") 1x, url("assets/hero/hero-1280.webp") 2x);}
-  @media(max-width:480px){.hero-bg{background-image:image-set(url("assets/hero/hero-480.webp") 1x, url("assets/hero/hero-768.webp") 2x);}}
-  @media(min-width:769px){.hero-bg{background-image:image-set(url("assets/hero/hero-1280.webp") 1x, url("assets/hero/hero-1920.webp") 2x);}}
+  .hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0; filter:brightness(1.12) saturate(1.05);}
   .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; filter:brightness(1.12) saturate(1.05); transition:opacity 1.2s ease;}
   .hero-video.ready{opacity:1;}
   .hero-veil{position:absolute; inset:0; z-index:2; background:
@@ -559,7 +556,7 @@
 <main id="main">
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-bg"></div>
+  <img class="hero-bg" src="assets/hero/hero-1280.webp" srcset="assets/hero/hero-480.webp 480w, assets/hero/hero-768.webp 768w, assets/hero/hero-1280.webp 1280w, assets/hero/hero-1920.webp 1920w" sizes="100vw" alt="" fetchpriority="high" decoding="async">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline poster="assets/video/hero-poster.webp" preload="metadata">
     <source src="assets/video/hero.mp4" type="video/mp4">
   </video>
@@ -785,7 +782,7 @@
             <div class="fld"><label for="cf-name">Name</label><input id="cf-name" required name="name" type="text" placeholder="Your name" autocomplete="name"></div>
             <div class="fld"><label for="cf-phone">Phone</label><input id="cf-phone" required name="phone" type="tel" placeholder="+971 ..." autocomplete="tel"></div>
             <div class="fld"><label for="cf-treatment">Treatment</label>
-              <select id="cf-treatment" name="treatment">
+              <select id="cf-treatment" name="treatment" aria-label="Treatment">
                 <option>Tension Relaxation Massage</option>
                 <option>Deep Muscle Relaxation Massage</option>
                 <option>Essential Oil Aroma Massage</option>
