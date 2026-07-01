@@ -4,4 +4,4 @@ Disallow: /privacy.html
 Disallow: /terms.html
 Disallow: /cookies.html
 
-Sitemap: https://eurospa.ae/sitemap.xml
+Sitemap: https://promo.eurospa.ae/sitemap.xml
