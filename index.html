@@ -405,7 +405,7 @@
   .slider-arrows button:hover{background:var(--gold); color:var(--noir);}
 
   /* reels — vertical video tiles (promo.luxuryspa.ae style) */
-  .vgal-track{display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:4px;}
+  .vgal-track{display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:4px;}
   .vgal-track::-webkit-scrollbar{display:none;}
   .vtile{position:relative; flex:0 0 calc((100% - 72px)/5); scroll-snap-align:start; border-radius:16px; overflow:hidden; border:1px solid rgba(198,165,103,0.4); aspect-ratio:9/16; background:var(--plum3); box-shadow:0 24px 50px -30px rgba(0,0,0,0.7);}
   .vtile video{width:100%; height:100%; object-fit:cover; display:block; cursor:pointer;}
@@ -458,12 +458,13 @@
     .slider-arrows{display:flex; gap:12px; justify-content:center; margin-top:30px;}
     .slider-arrows button{width:48px; height:48px; border-radius:50%; border:1px solid rgba(198,165,103,0.5); background:transparent; color:var(--gold-d); font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .3s,color .3s;}
     .slider-arrows button:active{background:var(--gold); color:var(--noir);}
-    .track{display:flex !important; grid-template-columns:none !important; grid-auto-rows:auto !important; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; gap:16px; scrollbar-width:none; margin:0 -22px; padding:0 22px;}
+    .track{display:flex !important; grid-template-columns:none !important; grid-auto-rows:auto !important; overflow-x:auto; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; gap:16px; scrollbar-width:none; margin:0 -22px; padding:0 22px;}
     .track::-webkit-scrollbar{display:none;}
     .track > *{scroll-snap-align:center; flex:0 0 80%;}
     .gal-grid.track > *{flex:0 0 82%; height:300px;}
     .gal-grid.track > .tile.tall,.gal-grid.track > .tile.wide{grid-row:auto; grid-column:auto;}
-    .vtile{flex:0 0 76%;}
+    .vgal-track{gap:24px;}
+    .vtile{flex:0 0 100%; scroll-snap-align:center;}
     .inside-split{grid-template-columns:1fr;}
     .inside-feature{height:320px;}
     .inside-quad .tile{height:190px;}
@@ -690,7 +691,8 @@
       </div>
     </div>
     <!-- reels: part of the same Inside block -->
-    <div class="slider-wrap reveal" style="margin-top:30px;">
+    <div class="reveal" style="text-align:center; margin:44px 0 24px;"><span class="eyebrow center">Video</span></div>
+    <div class="slider-wrap reveal">
       <div class="vgal-track" id="reelsTrack">
         <div class="vtile"><video src="assets/reels/reel-7.mp4" poster="assets/reels/reel-7.webp" loop playsinline preload="metadata"></video><button class="vplay" type="button" aria-label="Play video"><span class="vplay-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#1E1226"><path d="M8 5v14l11-7z"></path></svg></span></button></div>
         <div class="vtile"><video src="assets/reels/reel-1.mp4" poster="assets/reels/reel-1.webp" loop playsinline preload="metadata"></video><button class="vplay" type="button" aria-label="Play video"><span class="vplay-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="#1E1226"><path d="M8 5v14l11-7z"></path></svg></span></button></div>
