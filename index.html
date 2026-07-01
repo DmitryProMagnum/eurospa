@@ -425,9 +425,16 @@
   @media(max-width:768px){
     .wrap{padding:0 22px;}
     .section{padding:40px 0;}
-    .nav-inner{padding:13px 18px;}
+    .nav-inner{padding:11px 18px;}
+    .brand img{height:42px;}
+    .brand .wordmark{font-size:22px; letter-spacing:0.26em; padding-left:4px;}
+    /* collapse to a slim bar on scroll */
+    header.nav.scrolled .nav-inner{padding:6px 18px;}
+    header.nav.scrolled .brand img{height:29px;}
+    header.nav.scrolled .brand .wordmark{font-size:17px;}
+    header.nav.scrolled .burger{transform:scale(0.9);}
     .nav-desktop, .nav-right .tel-link, .nav-right .wa-pill, .nav-right .nav-social{display:none;}
-    .burger{display:flex;}
+    .burger{display:flex; transition:transform .4s var(--ease);}
     .top-strip span{font-size:10.5px;}
     .hero{min-height:92vh;}
     .hero p{font-size:16px;}
