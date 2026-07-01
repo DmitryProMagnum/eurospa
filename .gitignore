@@ -1,0 +1,10 @@
+# tooling / local
+.claude/
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+
+# never deploy raw source videos (kept outside the repo)
+*.MOV
+*.mov
