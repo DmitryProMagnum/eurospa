@@ -196,11 +196,12 @@
   .mobile-menu.open{opacity:1; visibility:visible;}
   .mm-inner{min-height:100%; display:flex; flex-direction:column; padding:20px 28px calc(30px + env(safe-area-inset-bottom));}
   .mm-head{display:flex; align-items:center; justify-content:space-between; padding-bottom:16px; border-bottom:1px solid rgba(198,165,103,0.18);}
-  .mm-brand{font-family:var(--serif); font-weight:500; font-size:22px; letter-spacing:0.3em; color:var(--cream-l);}
+  .mm-brand{display:flex; align-items:center; gap:11px; font-family:var(--serif); font-weight:500; font-size:22px; letter-spacing:0.3em; color:var(--cream-l);}
+  .mm-brand img{height:40px; width:auto;}
   .mm-close{width:46px; height:46px; border-radius:50%; border:1px solid rgba(198,165,103,0.4); background:transparent; color:var(--cream); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .3s var(--ease), color .3s, border-color .3s, transform .3s;}
   .mm-close:active{background:var(--gold); color:var(--noir); border-color:var(--gold); transform:rotate(90deg);}
-  .mm-nav{flex:1; display:flex; flex-direction:column; justify-content:center; gap:2px; padding:30px 0;}
-  .mm-nav a{display:flex; align-items:baseline; gap:20px; font-family:var(--serif); font-weight:400; font-size:clamp(34px,10vw,44px); line-height:1.42; color:var(--cream-l); text-decoration:none; padding:5px 0; transform:translateX(-18px); opacity:0;}
+  .mm-nav{flex:1; display:flex; flex-direction:column; align-items:flex-end; justify-content:center; gap:2px; padding:30px 0;}
+  .mm-nav a{display:flex; align-items:baseline; gap:20px; font-family:var(--serif); font-weight:400; font-size:clamp(34px,10vw,44px); line-height:1.42; color:var(--cream-l); text-decoration:none; padding:5px 0; transform:translateX(18px); opacity:0;}
   .mm-nav a i{font-family:var(--serif); font-style:italic; font-size:15px; color:var(--gold); width:22px; flex-shrink:0; transform:translateY(-6px);}
   .mm-nav a:active{color:var(--gold-l);}
   .mobile-menu.open .mm-nav a{animation:mmSlide .6s var(--ease) forwards;}
@@ -216,7 +217,7 @@
   .mm-tel{font-family:var(--serif); font-size:28px; color:var(--cream-l); text-decoration:none;}
   .mm-hours{font-family:var(--sans); font-weight:300; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(244,236,221,0.5);}
   .mm-book{width:100%; text-align:center; margin-top:8px; padding:16px;}
-  .mm-social{display:flex; gap:12px; margin-top:6px;}
+  .mm-social{display:flex; gap:14px; margin-top:10px; width:100%; justify-content:center;}
 
   /* hero */
   .hero{position:relative; min-height:calc(100vh - 118px); background:var(--noir); overflow:hidden; display:flex; align-items:center; justify-content:center;}
@@ -436,7 +437,8 @@
     .nav-desktop, .nav-right .tel-link, .nav-right .wa-pill, .nav-right .nav-social{display:none;}
     .burger{display:flex; transition:transform .4s var(--ease);}
     .top-strip span{font-size:10.5px;}
-    .hero{min-height:92vh;}
+    .hero{align-items:flex-start;}
+    .hero-inner{padding:34px 24px 48px;}
     .hero p{font-size:16px;}
     .sec-head{margin-bottom:46px;}
     .about-grid{grid-template-columns:1fr; gap:54px;}
@@ -527,7 +529,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <div class="mm-inner">
     <div class="mm-head">
-      <span class="mm-brand">EUROSPA</span>
+      <span class="mm-brand"><img src="assets/logo-mark.png" alt="EuroSpa"><span>EUROSPA</span></span>
       <button class="mm-close" id="mclose" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button>
     </div>
     <nav class="mm-nav">
@@ -570,7 +572,7 @@
 <!-- SERVICES -->
 <section class="section dark" id="treatments">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="eyebrow center">Our Menu</span><h2 class="on-dark">Signature Treatments</h2></div>
+    <div class="sec-head reveal"><span class="eyebrow center">Services</span><h2 class="on-dark">Signature Treatments</h2></div>
     <div class="svc-preview" id="svcPreview"><img id="svcPreviewImg" alt=""></div>
     <div class="svc-list reveal" id="svcList">
       <div class="svc-row" data-img="assets/gallery/relax.webp">
