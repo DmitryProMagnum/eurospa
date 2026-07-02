@@ -402,10 +402,14 @@
   /* slider arrows overlaid on the sides of the slider (reels always; other sliders on mobile) */
   .slider-arrows{display:none; position:absolute; inset:0; margin:0; pointer-events:none; z-index:6;}
   .slider-arrows.always{display:block;}
-  .slider-arrows button{position:absolute; top:50%; transform:translateY(-50%); pointer-events:auto; width:46px; height:46px; border-radius:50%; background:rgba(30,18,38,0.5); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); border:1px solid rgba(198,165,103,0.6); color:var(--cream-l); font-size:22px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px -10px rgba(0,0,0,0.6); transition:background .3s var(--ease), color .3s, border-color .3s;}
-  .slider-arrows button[data-dir="-1"]{left:12px;}
-  .slider-arrows button[data-dir="1"]{right:12px;}
-  .slider-arrows button:hover,.slider-arrows button:active{background:var(--gold); color:var(--noir); border-color:var(--gold);}
+  /* thin chevron indicators (no circle) */
+  .slider-arrows button{position:absolute; top:50%; transform:translateY(-50%); pointer-events:auto; width:46px; height:66px; padding:0; background:none; border:none; box-shadow:none; color:var(--cream-l); font-size:0; cursor:pointer; display:flex; align-items:center; justify-content:center; filter:drop-shadow(0 2px 6px rgba(0,0,0,0.55)); transition:color .3s var(--ease), transform .3s var(--ease);}
+  .slider-arrows button::before{content:''; width:16px; height:16px; border:solid currentColor; border-width:0 2px 2px 0;}
+  .slider-arrows button[data-dir="-1"]{left:6px;}
+  .slider-arrows button[data-dir="-1"]::before{transform:rotate(135deg); margin-left:6px;}
+  .slider-arrows button[data-dir="1"]{right:6px;}
+  .slider-arrows button[data-dir="1"]::before{transform:rotate(-45deg); margin-right:6px;}
+  .slider-arrows button:hover,.slider-arrows button:active{color:var(--gold-l); transform:translateY(-50%) scale(1.18);}
 
   /* reels — vertical video tiles (promo.luxuryspa.ae style) */
   .vgal-track{display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:4px;}
