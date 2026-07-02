@@ -372,6 +372,18 @@
   .wa-float .wa-txt{white-space:nowrap; font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:0.06em; opacity:0; transition:opacity .3s; padding-right:6px;}
   @media(hover:hover){.wa-float:hover{width:212px;} .wa-float:hover .wa-txt{opacity:1;}}
 
+  /* consent banner */
+  .consent{position:fixed; left:16px; right:16px; bottom:16px; z-index:95; max-width:760px; margin:0 auto; display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:center; background:rgba(30,18,38,0.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(198,165,103,0.28); border-radius:8px; padding:16px 20px; box-shadow:0 20px 50px -20px rgba(0,0,0,0.7);}
+  .consent[hidden]{display:none;}
+  .consent-txt{margin:0; font-family:var(--sans); font-weight:300; font-size:12.5px; line-height:1.6; color:rgba(244,236,221,0.8); flex:1 1 300px;}
+  .consent-txt a{color:var(--gold-l);}
+  .consent-btns{display:flex; gap:10px; flex-shrink:0;}
+  .consent-btns button{font-family:var(--sans); font-weight:500; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; padding:11px 22px; border-radius:3px; cursor:pointer; transition:background .3s var(--ease), color .3s, border-color .3s;}
+  .consent-decline{background:transparent; border:1px solid rgba(198,165,103,0.5); color:var(--cream);}
+  .consent-decline:hover{border-color:var(--gold-l); color:var(--gold-l);}
+  .consent-accept{background:var(--gold); border:1px solid var(--gold); color:var(--noir);}
+  .consent-accept:hover{background:var(--gold-l); border-color:var(--gold-l);}
+
   /* modals */
   .modal{position:fixed; inset:0; z-index:100; background:rgba(14,8,18,0.7); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:none; align-items:flex-start; justify-content:center; overflow-y:auto; padding:40px 18px;}
   .modal.open{display:flex; animation:fadeIn .35s ease;}
@@ -499,7 +511,7 @@
 <body>
 
 <!-- TOP STRIP -->
-<a class="top-strip" href="https://maps.app.goo.gl/FjuX6k68DiMQL5xL7" target="_blank" rel="noopener" data-maps data-loc="topbar">
+<a class="top-strip" href="https://maps.app.goo.gl/FjuX6k68DiMQL5xL7" target="_blank" rel="noopener" data-maps data-source="topbar">
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C6A567" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
   <span>Ramada by Wyndham Hotel, 2nd floor · Barsha Heights · Dubai</span>
 </a>
@@ -518,15 +530,15 @@
       <span class="wordmark">EUROSPA</span>
     </a>
     <div class="nav-right">
-      <a class="tel-link" href="tel:+971502271689" data-tel data-loc="nav">
+      <a class="tel-link" href="tel:+971502271689" data-tel data-source="header">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C6A567" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
         +971 50 227 1689
       </a>
       <span class="nav-social">
-        <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-loc="nav"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-        <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-loc="nav"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
+        <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-source="header"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-source="header"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
       </span>
-      <a class="wa-pill" href="#" data-wa data-loc="nav">
+      <a class="wa-pill" href="#" data-wa data-source="header">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg>
         WhatsApp
       </a>
@@ -550,13 +562,13 @@
       <a href="#contact"><i>05</i>Contact</a>
     </nav>
     <div class="mm-foot">
-      <a class="mm-tel" href="tel:+971502271689" data-tel data-loc="mobile_menu">+971 50 227 1689</a>
+      <a class="mm-tel" href="tel:+971502271689" data-tel data-source="mobile_menu">+971 50 227 1689</a>
       <div class="mm-hours">Daily 10:00 to 02:00</div>
-      <a class="mm-address" href="https://maps.app.goo.gl/FjuX6k68DiMQL5xL7" target="_blank" rel="noopener" data-maps data-loc="mobile_menu"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Ramada by Wyndham Hotel, Barsha Heights</a>
-      <a class="btn btn-gold mm-book" href="#" data-wa data-loc="mobile_menu">Book on WhatsApp</a>
+      <a class="mm-address" href="https://maps.app.goo.gl/FjuX6k68DiMQL5xL7" target="_blank" rel="noopener" data-maps data-source="mobile_menu"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Ramada by Wyndham Hotel, Barsha Heights</a>
+      <a class="btn btn-gold mm-book" href="#" data-wa data-source="mobile_menu">Book on WhatsApp</a>
       <span class="mm-social nav-social">
-        <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-loc="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-        <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-loc="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
+        <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-source="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-source="mobile_menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
       </span>
     </div>
   </div>
@@ -746,7 +758,7 @@
 <!-- INSTAGRAM -->
 <section class="section plum">
   <div class="wrap">
-    <div class="sec-head reveal" style="margin-bottom:42px;"><span class="eyebrow center">@eurospa.dubai</span><h2 class="on-dark">Follow our journey</h2></div>
+    <div class="sec-head reveal" style="margin-bottom:42px;"><span class="eyebrow center">@eurospa.dxb</span><h2 class="on-dark">Follow our journey</h2></div>
     <div class="reveal">
       <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
       <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -777,10 +789,10 @@
         <h2 class="on-dark" style="font-size:clamp(40px,5vw,64px); line-height:1.02; margin:20px 0 0;">Your journey to<br>renewal begins here</h2>
         <p style="max-width:430px; font-size:16px; line-height:1.75; color:rgba(244,236,221,0.68); margin:26px 0 40px; font-weight:300;">Contact EuroSpa today and begin your journey to ultimate relaxation and renewed vitality. We are here for you, every day of the week.</p>
         <div style="display:flex; flex-direction:column; border-top:1px solid rgba(198,165,103,0.28);">
-          <a class="contact-row" href="#" data-wa data-loc="contact">
+          <a class="contact-row" href="#" data-wa data-source="contact">
             <span class="lbl">WhatsApp</span><span class="val">+971 56 227 9600</span>
           </a>
-          <a class="contact-row" href="tel:+971502271689" data-tel data-loc="contact">
+          <a class="contact-row" href="tel:+971502271689" data-tel data-source="contact">
             <span class="lbl">Phone</span><span class="val">+971 50 227 1689</span>
           </a>
           <div class="contact-row" style="cursor:default;">
@@ -808,7 +820,7 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-dark" style="width:100%; margin-top:36px;" data-loc="contact_form">Send via WhatsApp</button>
+          <button type="submit" class="btn btn-dark" style="width:100%; margin-top:36px;" data-source="contact_form">Send via WhatsApp</button>
         </form>
       </div>
     </div>
@@ -833,10 +845,10 @@
       </div>
       <div style="display:flex; align-items:center; gap:16px;">
         <span class="nav-social" style="display:flex;">
-          <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-loc="footer"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-          <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-loc="footer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
+          <a class="social" href="https://www.instagram.com/eurospa.dxb/" target="_blank" rel="noopener" aria-label="EuroSpa on Instagram" data-social="instagram" data-source="footer"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a class="social" href="https://www.facebook.com/eurospa.dubai/" target="_blank" rel="noopener" aria-label="EuroSpa on Facebook" data-social="facebook" data-source="footer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg></a>
         </span>
-        <a class="btn btn-outline" href="#" data-wa data-loc="footer" style="padding:13px 30px; font-size:11px;">Book on WhatsApp</a>
+        <a class="btn btn-outline" href="#" data-wa data-source="footer" style="padding:13px 30px; font-size:11px;">Book on WhatsApp</a>
       </div>
     </div>
     <div class="foot-legal">
@@ -844,17 +856,26 @@
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
       <a href="cookies.html">Cookie Policy</a>
-      <a href="mailto:dubaimassagetreat@gmail.com" data-loc="footer">dubaimassagetreat@gmail.com</a>
+      <a href="mailto:dubaimassagetreat@gmail.com" data-source="footer">dubaimassagetreat@gmail.com</a>
       <span style="color:rgba(197,178,149,0.45);">Ramada by Wyndham Hotel, 2nd floor · Barsha Heights · Daily 10:00 to 02:00</span>
     </div>
   </div>
 </footer>
 
 <!-- FLOAT WA -->
-<a class="wa-float" href="#" data-wa data-loc="float" aria-label="Book on WhatsApp">
+<a class="wa-float" href="#" data-wa data-source="sticky" aria-label="Book on WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg>
   <span class="wa-txt">Book on WhatsApp</span>
 </a>
+
+<!-- CONSENT BANNER (Consent Mode v2) -->
+<div class="consent" id="consent" hidden>
+  <p class="consent-txt">We use cookies for analytics and to measure our advertising. See our <a href="cookies.html">Cookie Policy</a>.</p>
+  <div class="consent-btns">
+    <button type="button" class="consent-decline" id="consentDecline">Decline</button>
+    <button type="button" class="consent-accept" id="consentAccept">Accept</button>
+  </div>
+</div>
 
 <!-- QUIZ MODAL -->
 <div class="modal" id="quizModal">
@@ -875,25 +896,61 @@
 <script>
 (function(){
   "use strict";
+  /* === Tracking config === create NEW EuroSpa IDs, do NOT reuse Luxury (G-N8CY4NMQJ9 / AW-18278591914) === */
   var CFG = {
-    WA_NUMBER: "971562279600",   // WhatsApp (confirmed live line)
-    GA4_ID: "",                  // "G-XXXXXXXXXX" to enable analytics
-    ELFSIGHT_CODE: "",           // "elfsight-app-xxxx..." to mount the Instagram feed
+    WA_NUMBER: "971562279600",   // WhatsApp booking line
+    GA4_ID:  "",                 // "G-XXXXXXXXXX"  GA4 Measurement ID (new EuroSpa property)
+    ADS_ID:  "",                 // "AW-XXXXXXXXXX" Google Ads Conversion ID (EuroSpa CID)
     MAPS_LINK: "https://maps.app.goo.gl/FjuX6k68DiMQL5xL7"
   };
 
+  /* --- Consent Mode v2: default denied, updated after consent (region-agnostic) --- */
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+  gtag('consent','default',{ ad_storage:'denied', analytics_storage:'denied', ad_user_data:'denied', ad_personalization:'denied', wait_for_update:500 });
+
+  /* --- GCLID bridge: capture the paid click id so it can ride into the WhatsApp chat (offline import) --- */
+  var CLICK_ID = (function(){
+    try{
+      var p = new URLSearchParams(location.search);
+      var id = p.get('gclid') || p.get('gbraid') || p.get('wbraid');
+      if(id) return id;
+      var m = document.cookie.match(/(?:^|;\s*)es_gclid=([^;]+)/);
+      return m ? decodeURIComponent(m[1]) : '';
+    }catch(e){ return ''; }
+  })();
+
   function gaInit(){
-    if(!CFG.GA4_ID) return;
+    var id = CFG.GA4_ID || CFG.ADS_ID;
+    if(!id) return;
     var s=document.createElement('script'); s.async=true;
-    s.src='https://www.googletagmanager.com/gtag/js?id='+CFG.GA4_ID;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+id;
     document.head.appendChild(s);
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=function(){window.dataLayer.push(arguments);};
-    window.gtag('js',new Date()); window.gtag('config',CFG.GA4_ID);
+    gtag('js', new Date());
+    if(CFG.GA4_ID) gtag('config', CFG.GA4_ID);
+    if(CFG.ADS_ID) gtag('config', CFG.ADS_ID);
   }
-  function track(ev,loc){ if(window.gtag) window.gtag('event',ev,{cta_location:loc||'unknown'}); }
-  function waUrl(msg){ return 'https://api.whatsapp.com/send/?phone='+CFG.WA_NUMBER+'&text='+encodeURIComponent(msg)+'&type=phone_number&app_absent=0'; }
-  function openWa(msg,loc){ track('whatsapp_click',loc); window.open(waUrl(msg),'_blank','noopener'); }
+
+  /* push to dataLayer (future GTM) + direct gtag event (current pure-gtag setup) */
+  function track(event, params){
+    params = params || {};
+    var o={}; for(var k in params){ if(params[k]!==undefined) o[k]=params[k]; }
+    o.event=event; window.dataLayer.push(o);
+    if(CFG.GA4_ID || CFG.ADS_ID){ gtag('event', event, params); }
+  }
+
+  function waUrl(msg){
+    if(CLICK_ID) msg += '\nRef: ' + CLICK_ID;
+    return 'https://api.whatsapp.com/send/?phone='+CFG.WA_NUMBER+'&text='+encodeURIComponent(msg)+'&type=phone_number&app_absent=0';
+  }
+  function openWa(msg, source, serviceName){
+    track('whatsapp_click', { source: source||'unknown', service_name: serviceName||null });
+    window.open(waUrl(msg),'_blank','noopener');
+  }
+  function openWaLead(msg, params){
+    track('whatsapp_lead', params||{});
+    window.open(waUrl(msg),'_blank','noopener');
+  }
 
   var SERVICES=[
     {name:'Tension Relaxation', img:'assets/gallery/relax.webp', p60:450, p90:650},
@@ -945,15 +1002,15 @@
     hv.addEventListener('canplay',showV);
   }
 
-  /* delegated tracking + WhatsApp */
+  /* delegated tracking + WhatsApp (capture phase, in case the site handler calls stopPropagation) */
   document.addEventListener('click',function(e){
     var wa=e.target.closest('[data-wa]');
     if(wa){ e.preventDefault(); closeMenu();
-      openWa('Hi, I would like to book an appointment at EuroSpa.', wa.getAttribute('data-loc')); return; }
-    var tel=e.target.closest('[data-tel]'); if(tel){ track('phone_click', tel.getAttribute('data-loc')); }
-    var mp=e.target.closest('[data-maps]'); if(mp){ track('maps_click', mp.getAttribute('data-loc')); }
-    var so=e.target.closest('[data-social]'); if(so){ if(window.gtag) window.gtag('event','social_click',{network:so.getAttribute('data-social'), cta_location:so.getAttribute('data-loc')||'unknown'}); }
-  });
+      openWa('Hi, I would like to book an appointment at EuroSpa.', wa.getAttribute('data-source')); return; }
+    var tel=e.target.closest('[data-tel]'); if(tel){ track('phone_click', { source: tel.getAttribute('data-source')||'unknown' }); }
+    var mp=e.target.closest('[data-maps]'); if(mp){ track('maps_click', { source: mp.getAttribute('data-source')||'unknown' }); }
+    var so=e.target.closest('[data-social]'); if(so){ track('social_click', { source: so.getAttribute('data-source')||'unknown', network: so.getAttribute('data-social') }); }
+  }, true);
 
   /* services hover preview */
   var prev=$('#svcPreview'), prevImg=$('#svcPreviewImg'), list=$('#svcList');
@@ -1005,7 +1062,7 @@
     if(f.name.value) msg+='\nName: '+f.name.value;
     if(f.phone.value) msg+='\nPhone: '+f.phone.value;
     if(f.treatment.value) msg+='\nTreatment: '+f.treatment.value;
-    openWa(msg,'contact_form');
+    openWaLead(msg, { source:'contact_form', treatment:f.treatment.value||null, has_name:!!(f.name.value&&f.name.value.trim()), has_phone:!!(f.phone.value&&f.phone.value.trim()) });
     $('#formCard').innerHTML='<div style="min-height:380px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:20px;">'+
       '<div style="width:84px; height:84px; border:1px solid var(--gold-d); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:42px; color:var(--gold-l);">&#10003;</div>'+
       '<h3 style="font-family:var(--serif); font-weight:400; font-size:40px; margin:0; color:var(--cream-l);">Thank you</h3>'+
@@ -1048,7 +1105,7 @@
       var nm=(($('#qz-name')||{}).value)||'', ph=(($('#qz-phone')||{}).value)||'';
       var msg='Hi, I would like to book an appointment at EuroSpa.\nMassage: '+s.name+'\nTherapist: '+t.name+'\nDuration: '+qs.dur+' min · '+price+' AED';
       if(nm) msg+='\nName: '+nm; if(ph) msg+='\nPhone: '+ph;
-      openWa(msg,'quiz'); closeQuiz();
+      openWaLead(msg, { source:'quiz', treatment:s.name, has_name:!!nm, has_phone:!!ph }); closeQuiz();
     }
   });
   $('#quizClose').addEventListener('click',closeQuiz);
@@ -1065,7 +1122,7 @@
       var price=priceEl?priceEl.textContent.trim():'';
       var msg='Hi, I would like to book the '+name+' at EuroSpa.';
       if(price) msg+='\nOption: '+price+' (60 / 90 min)';
-      openWa(msg,'service_book');
+      openWa(msg, 'service_card', name);
     });
   });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeQuiz(); closeVideo(); closeMenu(); } });
@@ -1077,6 +1134,22 @@
     var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{threshold:0.12});
     $$('.reveal, .stagger').forEach(function(el){ io.observe(el); });
   } else { $$('.reveal, .stagger').forEach(function(el){ el.classList.add('in'); }); }
+
+  /* consent banner: show only when tracking is configured and no prior choice */
+  (function(){
+    var box=$('#consent'); if(!box) return;
+    var tracked = !!(CFG.GA4_ID || CFG.ADS_ID);
+    function choice(){ var m=document.cookie.match(/(?:^|;\s*)es_consent=([^;]+)/); return m?m[1]:''; }
+    function remember(v){ document.cookie='es_consent='+v+';max-age=15552000;path=/;SameSite=Lax'; }
+    function grant(){
+      gtag('consent','update',{ ad_storage:'granted', analytics_storage:'granted', ad_user_data:'granted', ad_personalization:'granted' });
+      if(CLICK_ID){ try{ document.cookie='es_gclid='+encodeURIComponent(CLICK_ID)+';max-age=7776000;path=/;SameSite=Lax'; }catch(e){} }
+    }
+    if(choice()==='granted'){ grant(); }
+    else if(tracked && !choice()){ box.hidden=false; }
+    $('#consentAccept').addEventListener('click',function(){ remember('granted'); grant(); box.hidden=true; });
+    $('#consentDecline').addEventListener('click',function(){ remember('denied'); box.hidden=true; });
+  })();
 
   gaInit();
 })();
