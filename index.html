@@ -373,7 +373,7 @@
   @media(hover:hover){.wa-float:hover{width:212px;} .wa-float:hover .wa-txt{opacity:1;}}
 
   /* consent banner */
-  .consent{position:fixed; left:16px; right:16px; bottom:16px; z-index:95; max-width:760px; margin:0 auto; display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:center; background:rgba(30,18,38,0.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(198,165,103,0.28); border-radius:8px; padding:16px 20px; box-shadow:0 20px 50px -20px rgba(0,0,0,0.7);}
+  .consent{position:fixed; left:16px; right:16px; bottom:16px; z-index:9999; max-width:760px; margin:0 auto; display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:center; background:rgba(30,18,38,0.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(198,165,103,0.28); border-radius:8px; padding:16px 20px; box-shadow:0 20px 50px -20px rgba(0,0,0,0.7);}
   .consent[hidden]{display:none;}
   .consent-txt{margin:0; font-family:var(--sans); font-weight:300; font-size:12.5px; line-height:1.6; color:rgba(244,236,221,0.8); flex:1 1 300px;}
   .consent-txt a{color:var(--gold-l);}
@@ -1135,18 +1135,18 @@
     $$('.reveal, .stagger').forEach(function(el){ io.observe(el); });
   } else { $$('.reveal, .stagger').forEach(function(el){ el.classList.add('in'); }); }
 
-  /* consent banner: show only when tracking is configured and no prior choice */
+  /* consent banner: show whenever no prior choice; remember choice in localStorage */
   (function(){
     var box=$('#consent'); if(!box) return;
-    var tracked = !!(CFG.GA4_ID || CFG.ADS_ID);
-    function choice(){ var m=document.cookie.match(/(?:^|;\s*)es_consent=([^;]+)/); return m?m[1]:''; }
-    function remember(v){ document.cookie='es_consent='+v+';max-age=15552000;path=/;SameSite=Lax'; }
+    function choice(){ try{ return localStorage.getItem('eurospa_consent')||''; }catch(e){ return ''; } }
+    function remember(v){ try{ localStorage.setItem('eurospa_consent', v); }catch(e){} }
     function grant(){
       gtag('consent','update',{ ad_storage:'granted', analytics_storage:'granted', ad_user_data:'granted', ad_personalization:'granted' });
       if(CLICK_ID){ try{ document.cookie='es_gclid='+encodeURIComponent(CLICK_ID)+';max-age=7776000;path=/;SameSite=Lax'; }catch(e){} }
     }
-    if(choice()==='granted'){ grant(); }
-    else if(tracked && !choice()){ box.hidden=false; }
+    var c=choice();
+    if(c==='granted'){ grant(); }
+    else if(!c){ box.hidden=false; }
     $('#consentAccept').addEventListener('click',function(){ remember('granted'); grant(); box.hidden=true; });
     $('#consentDecline').addEventListener('click',function(){ remember('denied'); box.hidden=true; });
   })();
