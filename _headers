@@ -1,0 +1,5 @@
+# Cloudflare Pages headers
+# Always revalidate so updated pages and re-uploaded images (same filename)
+# show immediately. Unchanged files return a cheap 304, so this stays fast.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
