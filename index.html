@@ -1102,7 +1102,7 @@
       } else {
         h+='<div style="font-family:var(--sans); font-weight:500; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold-l); margin:28px 0 12px;">Duration</div><div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;"><button class="dur-btn '+(qs.dur==='60'?'on':'off')+'" data-dur="60">60 min · '+s.p60+' AED</button><button class="dur-btn '+(qs.dur==='90'?'on':'off')+'" data-dur="90">90 min · '+s.p90+' AED</button></div>';
       }
-      h+='<div class="fld" style="margin-top:26px;"><label for="qz-name">Name</label><input id="qz-name" type="text" placeholder="Your name" autocomplete="name"></div><div class="fld" style="margin-top:20px;"><label for="qz-phone">Phone</label><input id="qz-phone" type="tel" placeholder="+971 ..." autocomplete="tel"></div>';
+      h+='<div class="fld" style="margin-top:26px;"><label for="qz-name">Name</label><input id="qz-name" type="text" placeholder="Your name" autocomplete="name"></div>';
       h+='<button class="btn btn-gold" id="qzBook" style="width:100%; margin-top:34px;">'+(consult?'Request consultation via WhatsApp':'Book via WhatsApp')+'</button><div style="text-align:center; margin-top:18px;"><button class="qback" data-step="2">&lsaquo; Back</button></div></div>';
     }
     quizBody.innerHTML=h;
@@ -1115,7 +1115,7 @@
     if(e.target.closest('#qzBook')){
       var consult=qs.sIdx==='consult';
       var s=consult?null:SERVICES[qs.sIdx], t=qs.tIdx==='any'?{name:'No preference'}:THERAPISTS[qs.tIdx];
-      var nm=(($('#qz-name')||{}).value)||'', ph=(($('#qz-phone')||{}).value)||'';
+      var nm=(($('#qz-name')||{}).value)||'';
       var msg, treatment;
       if(consult){
         msg='Hi, I would like a consultation at EuroSpa to help me choose the right massage.\nTherapist: '+t.name;
@@ -1125,8 +1125,8 @@
         msg='Hi, I would like to book an appointment at EuroSpa.\nMassage: '+s.name+'\nTherapist: '+t.name+'\nDuration: '+qs.dur+' min · '+price+' AED';
         treatment=s.name;
       }
-      if(nm) msg+='\nName: '+nm; if(ph) msg+='\nPhone: '+ph;
-      openWaLead(msg, { source:'quiz', treatment:treatment, has_name:!!nm, has_phone:!!ph }); closeQuiz();
+      if(nm) msg+='\nName: '+nm;
+      openWaLead(msg, { source:'quiz', treatment:treatment, has_name:!!nm }); closeQuiz();
     }
   });
   $('#quizClose').addEventListener('click',closeQuiz);
