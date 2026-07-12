@@ -3,6 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Consent Mode v2 defaults (must run BEFORE GTM). analytics granted, ad signals denied until Accept. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent','default',{
+    'ad_storage':'denied',
+    'ad_user_data':'denied',
+    'ad_personalization':'denied',
+    'analytics_storage':'granted',
+    'security_storage':'granted',
+    'wait_for_update':500
+  });
+  gtag('set','url_passthrough',true);
+  gtag('set','ads_data_redaction',true);
+</script>
+<!-- Google Tag Manager (GA4 G-SP051L8WZ4 + Ads AW-18292969775 configured inside the container) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M85SC4TF');</script>
+<!-- End Google Tag Manager -->
+
 <title>EuroSpa · European Massage in Barsha Heights, Dubai | Affordable Luxury</title>
 <meta name="description" content="EuroSpa is a licensed European massage centre in Barsha Heights, Dubai. Swedish, deep tissue, hot stone, aroma and bamboo fusion massage by expert European therapists. Open daily 10:00 to 02:00. Book on WhatsApp.">
 <link rel="canonical" href="https://promo.eurospa.ae/">
@@ -513,6 +533,9 @@
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M85SC4TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- TOP STRIP -->
 <a class="top-strip" href="https://maps.app.goo.gl/FjuX6k68DiMQL5xL7" target="_blank" rel="noopener" data-maps data-source="topbar">
@@ -895,16 +918,12 @@
   "use strict";
   /* === Tracking config === create NEW EuroSpa IDs, do NOT reuse Luxury (G-N8CY4NMQJ9 / AW-18278591914) === */
   var CFG = {
-    WA_NUMBER: "971562279600",   // WhatsApp booking line
-    GA4_ID:  "G-SP051L8WZ4",     // GA4 Measurement ID (EuroSpa property)
-    ADS_ID:  "",                 // "AW-XXXXXXXXXX" Google Ads Conversion ID (EuroSpa CID)
+    WA_NUMBER: "971562279600",   // WhatsApp + phone line
     MAPS_LINK: "https://maps.app.goo.gl/FjuX6k68DiMQL5xL7"
   };
-
-  /* --- Consent Mode v2: default denied, updated after consent (region-agnostic) --- */
+  /* Measurement runs through GTM-M85SC4TF (GA4 + Google Ads live inside the container).
+     Consent Mode v2 defaults are set inline in <head> BEFORE GTM. dataLayer + gtag exist globally. */
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-  gtag('consent','default',{ ad_storage:'denied', analytics_storage:'denied', ad_user_data:'denied', ad_personalization:'denied', wait_for_update:500 });
 
   /* --- GCLID bridge: capture the paid click id so it can ride into the WhatsApp chat (offline import) --- */
   var CLICK_ID = (function(){
@@ -917,23 +936,11 @@
     }catch(e){ return ''; }
   })();
 
-  function gaInit(){
-    var id = CFG.GA4_ID || CFG.ADS_ID;
-    if(!id) return;
-    var s=document.createElement('script'); s.async=true;
-    s.src='https://www.googletagmanager.com/gtag/js?id='+id;
-    document.head.appendChild(s);
-    gtag('js', new Date());
-    if(CFG.GA4_ID) gtag('config', CFG.GA4_ID);
-    if(CFG.ADS_ID) gtag('config', CFG.ADS_ID);
-  }
-
-  /* push to dataLayer (future GTM) + direct gtag event (current pure-gtag setup) */
+  /* push a clean dataLayer event for GTM Custom Event triggers */
   function track(event, params){
     params = params || {};
-    var o={}; for(var k in params){ if(params[k]!==undefined) o[k]=params[k]; }
-    o.event=event; window.dataLayer.push(o);
-    if(CFG.GA4_ID || CFG.ADS_ID){ gtag('event', event, params); }
+    var o={event:event}; for(var k in params){ if(params[k]!==undefined) o[k]=params[k]; }
+    window.dataLayer.push(o);
   }
 
   function waUrl(msg){
@@ -945,7 +952,7 @@
     window.open(waUrl(msg),'_blank','noopener');
   }
   function openWaLead(msg, params){
-    track('whatsapp_lead', params||{});
+    track('generate_lead', params||{});
     window.open(waUrl(msg),'_blank','noopener');
   }
 
@@ -1149,23 +1156,35 @@
     $$('.reveal, .stagger').forEach(function(el){ io.observe(el); });
   } else { $$('.reveal, .stagger').forEach(function(el){ el.classList.add('in'); }); }
 
-  /* consent banner: show whenever no prior choice; remember choice in localStorage */
+  /* consent banner: analytics granted by default (see <head>); banner grants or denies the ad signals.
+     Fires a real Consent Mode update AND a consent_update dataLayer event for GTM. */
   (function(){
     var box=$('#consent'); if(!box) return;
-    function choice(){ try{ return localStorage.getItem('eurospa_consent')||''; }catch(e){ return ''; } }
-    function remember(v){ try{ localStorage.setItem('eurospa_consent', v); }catch(e){} }
+    var KEY='eurospa_consent';
+    function choice(){
+      try{
+        var raw=localStorage.getItem(KEY); if(!raw) return '';
+        if(raw==='granted'||raw==='denied') return raw;            /* legacy plain-string value */
+        var o=JSON.parse(raw); return (o&&o.state)?o.state:'';
+      }catch(e){ return ''; }
+    }
+    function remember(state){
+      try{ localStorage.setItem(KEY, JSON.stringify({ state:state, ts:new Date().toISOString() })); }catch(e){}
+    }
+    function update(adState){
+      gtag('consent','update',{ ad_storage:adState, ad_user_data:adState, ad_personalization:adState, analytics_storage:'granted' });
+      dataLayer.push({ event:'consent_update', ad_storage:adState, ad_user_data:adState, ad_personalization:adState, analytics_storage:'granted' });
+    }
     function grant(){
-      gtag('consent','update',{ ad_storage:'granted', analytics_storage:'granted', ad_user_data:'granted', ad_personalization:'granted' });
+      update('granted');
       if(CLICK_ID){ try{ document.cookie='es_gclid='+encodeURIComponent(CLICK_ID)+';max-age=7776000;path=/;SameSite=Lax'; }catch(e){} }
     }
     var c=choice();
     if(c==='granted'){ grant(); }
-    else if(!c){ box.hidden=false; }
+    else if(!c){ box.hidden=false; }   /* 'denied' -> defaults stand (ads denied), banner stays hidden */
     $('#consentAccept').addEventListener('click',function(){ remember('granted'); grant(); box.hidden=true; });
-    $('#consentDecline').addEventListener('click',function(){ remember('denied'); box.hidden=true; });
+    $('#consentDecline').addEventListener('click',function(){ remember('denied'); update('denied'); box.hidden=true; });
   })();
-
-  gaInit();
 })();
 </script>
 </body>
