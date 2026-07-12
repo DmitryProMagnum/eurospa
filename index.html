@@ -175,7 +175,8 @@
   .btn-dark::before{background:var(--gold-d);}
 
   /* top strip */
-  .top-strip{display:flex; align-items:center; justify-content:space-between; gap:16px; background:var(--plum); padding:11px 40px; border-bottom:1px solid rgba(198,165,103,0.14);}
+  .top-strip{background:var(--plum); border-bottom:1px solid rgba(198,165,103,0.14);}
+  .top-inner{max-width:var(--wrap); margin:0 auto; padding:11px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px;}
   .top-addr{display:inline-flex; align-items:center; gap:10px; text-decoration:none; transition:opacity .3s;}
   .top-addr:hover{opacity:0.72;}
   .top-strip span{font-family:var(--sans); font-weight:400; font-size:11.5px; letter-spacing:0.16em; color:#D9C49C;}
@@ -470,6 +471,7 @@
     .wrap{padding:0 22px;}
     .section{padding:40px 0;}
     .nav-inner{padding:11px 18px;}
+    .top-inner{padding:11px 18px;}
     .brand img{height:42px;}
     .brand .wordmark{font-size:22px; letter-spacing:0.26em; padding-left:4px;}
     /* collapse to a slim bar on scroll */
@@ -541,11 +543,13 @@
 
 <!-- TOP STRIP -->
 <div class="top-strip">
-  <a class="top-addr" href="https://maps.app.goo.gl/FjuX6k68DiMQL5xL7" target="_blank" rel="noopener" data-maps data-source="topbar">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C6A567" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-    <span>Ramada by Wyndham Hotel, 2nd floor · Barsha Heights · Dubai</span>
-  </a>
-  <span class="top-hours">Open daily 10:00 to 02:00</span>
+  <div class="top-inner">
+    <a class="top-addr" href="https://maps.app.goo.gl/FjuX6k68DiMQL5xL7" target="_blank" rel="noopener" data-maps data-source="topbar">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C6A567" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      <span>Ramada by Wyndham Hotel, 2nd floor · Barsha Heights · Dubai</span>
+    </a>
+    <span class="top-hours">Open daily 10:00 to 02:00</span>
+  </div>
 </div>
 
 <!-- NAV -->
