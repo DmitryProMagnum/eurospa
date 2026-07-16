@@ -137,6 +137,7 @@
   @keyframes shimmer{0%{background-position:-160% 0;} 100%{background-position:260% 0;}}
   @keyframes drawline{from{transform:scaleX(0);} to{transform:scaleX(1);}}
   @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0);} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+  @keyframes pulseRingGold{0%{box-shadow:0 0 0 0 rgba(198,165,103,0.55);} 70%{box-shadow:0 0 0 16px rgba(198,165,103,0);} 100%{box-shadow:0 0 0 0 rgba(198,165,103,0);}}
 
   .wrap{max-width:var(--wrap); margin:0 auto; padding:0 44px;}
   .eyebrow{display:inline-flex; align-items:center; font-family:var(--sans); font-weight:400; font-size:11.5px; letter-spacing:0.46em; text-transform:uppercase; color:var(--gold-d);}
@@ -393,6 +394,9 @@
   .wa-float svg{flex-shrink:0; margin:0 18px;}
   .wa-float .wa-txt{white-space:nowrap; font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:0.06em; opacity:0; transition:opacity .3s; padding-right:6px;}
   @media(hover:hover){.wa-float:hover{width:212px;} .wa-float:hover .wa-txt{opacity:1;}}
+  /* float call: mirror of the WhatsApp button, mobile only */
+  .call-float{position:fixed; left:24px; bottom:24px; z-index:70; display:none; align-items:center; justify-content:center; width:60px; height:60px; border-radius:40px; background:var(--gold); color:var(--noir); text-decoration:none; box-shadow:0 16px 38px -10px rgba(198,165,103,0.75); animation:pulseRingGold 2.8s infinite;}
+  @media(max-width:768px){ .call-float{display:flex;} }
 
   /* consent banner */
   .consent{position:fixed; left:16px; right:16px; bottom:16px; z-index:9999; max-width:760px; margin:0 auto; display:flex; align-items:center; gap:18px; flex-wrap:wrap; justify-content:center; background:rgba(30,18,38,0.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(198,165,103,0.28); border-radius:8px; padding:16px 20px; box-shadow:0 20px 50px -20px rgba(0,0,0,0.7);}
@@ -895,6 +899,10 @@
 <a class="wa-float" href="#" data-wa data-source="sticky" aria-label="Book on WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.52 0-3.01-.41-4.3-1.18l-.31-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg>
   <span class="wa-txt">Book on WhatsApp</span>
+</a>
+
+<a class="call-float" href="tel:+971562279600" data-tel data-source="sticky" aria-label="Call EuroSpa +971 56 227 9600">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
 </a>
 
 <!-- CONSENT BANNER (Consent Mode v2) -->
